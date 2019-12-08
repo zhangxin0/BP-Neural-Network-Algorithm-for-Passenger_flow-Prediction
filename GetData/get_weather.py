@@ -30,16 +30,24 @@ class GetWeather():
         if a_result:
             if a_result['success'] != '0':
                 # change a_result to dict {datehour: {t: , hum: , weather:' ', wind:'', }}
+                last_hour = None
                 for hweather in a_result['result']:
+                    last_hour = hweather
                     uptime = int(hweather['uptime'][11:13])
                     if uptime >= hour:
-                        print(hweather)
                         weather = {}
                         weather['t'] = hweather['temperature']
                         weather['hum'] = hweather['humidity']
                         weather['wind'] = hweather['winp']
+                        weather['weather'] = hweather['weather']
                         return weather
-                return a_result
+                # if hour=23 and only measure to 22 this day:
+                weather = {}
+                weather['t'] = last_hour['temperature']
+                weather['hum'] = last_hour['humidity']
+                weather['wind'] = last_hour['winp']
+                weather['weather'] = last_hour['weather']
+                return weather
             else:
                 print(a_result['msgid'] + ' ' + a_result['msg'])
         else:
