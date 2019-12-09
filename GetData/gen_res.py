@@ -38,8 +38,9 @@ class GenRes():
         return months
 
     def get_res(self):
-        start_date = '2018-01-01'
-        end_date = '2018-04-26'
+        # last : 2018-04-26
+        start_date = '2018-04-27'
+        end_date = '2019-08-11'
         date = self.get_date_list(start_date, end_date)  # 两个日期之间的所有日期，包括开始日期， 包括 结束日期
         res = {}
         # print(get_month_list(start_date, end_date)) # 两个日期之间的所有月份，包括开始月份， 包括 结束月份
