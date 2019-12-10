@@ -1,0 +1,10 @@
+// NN Structure
+digraph {
+	A [label=X1]
+	B [label=X2]
+	L [label=X3]
+	x4 [label=X4]
+	A -> B
+	A -> L
+	B -> L [constraint=false]
+}
